@@ -68,25 +68,6 @@ data "aws_iam_policy_document" "assume_role_policy" {
       values   = ["sts.amazonaws.com"]
     }
   }
-
-  statement {
-    sid       = ""
-    effect    = "Allow"
-    resources = ["*"]
-
-    actions = [
-      "autoscaling:SetDesiredCapacity",
-      "autoscaling:TerminateInstanceInAutoScalingGroup",
-      "ec2:DescribeInstanceTypes",
-      "eks:DescribeNodegroup",
-    ]
-
-    condition {
-      test     = "StringEquals"
-      variable = "autoscaling:ResourceTag/k8s.io/cluster-autoscaler/${var.cluster_id}"
-      values   = ["owned"]
-    }
-  }
 }
 
 module "helm" {
