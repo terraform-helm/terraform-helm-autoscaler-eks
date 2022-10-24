@@ -131,7 +131,7 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_policy" "this" {
-  name        = var.irsa_iam_role_name
+  name        = var.irsa_iam_policy_name
   description = "Cluster Autoscaler IAM policy"
   policy      = data.aws_iam_policy_document.cluster_autoscaler.json
 }

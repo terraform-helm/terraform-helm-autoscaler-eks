@@ -34,6 +34,12 @@ variable "irsa_iam_role_name" {
   default     = "eks-autoscaler"
 }
 
+variable "irsa_iam_policy_name" {
+  type        = string
+  description = "IAM policy name for IRSA"
+  default     = "eks-autoscaler"
+}
+
 variable "irsa_iam_permissions_boundary" {
   description = "IAM permissions boundary for IRSA roles"
   type        = string
