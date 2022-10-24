@@ -48,9 +48,15 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
 
 data "aws_iam_policy_document" "assume_role_policy" {
   statement {
+    principals {
+      type        = "Federated"
+      identifiers = [local.eks_oidc_provider_arn]
+    }
+
     actions = [
       "sts:AssumeRoleWithWebIdentity",
     ]
+
     condition {
       test     = "StringLike"
       variable = "${local.eks_oidc_issuer_url}:sub"
