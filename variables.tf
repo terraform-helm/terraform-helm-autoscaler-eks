@@ -57,6 +57,11 @@ variable "cluster_id" {
   type        = string
 }
 
+variable "region" {
+  description = "Region of you eks cluster"
+  type        = string
+}
+
 variable "oidc_provider" {
   description = "EKS OIDC provider"
   type        = string

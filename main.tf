@@ -85,7 +85,7 @@ module "helm" {
     }
   ]
   values = [templatefile("${path.module}/helm/autoscaler.yaml", {
-    aws_region     = "eu-west-3",
+    aws_region     = var.region,
     eks_cluster_id = var.cluster_id,
     }
   )]
