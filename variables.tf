@@ -31,7 +31,7 @@ variable "kubernetes_namespace" {
 variable "irsa_iam_role_name" {
   type        = string
   description = "IAM role name for IRSA"
-  name        = "eks-autoscaler"
+  default     = "eks-autoscaler"
 }
 
 variable "irsa_iam_permissions_boundary" {
