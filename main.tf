@@ -85,7 +85,7 @@ data "aws_iam_policy_document" "assume_role_policy" {
 
 module "helm" {
   source = "github.com/terraform-helm/terraform-helm-autoscaler"
-  count  = install_helm ? 1 : 0
+  count  = var.install_helm ? 1 : 0
   images = var.images
   set_values = [
     {
