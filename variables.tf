@@ -10,6 +10,12 @@ variable "install_helm" {
   default     = true
 }
 
+variable "release_version" {
+  description = "version of helm release"
+  type        = string
+  default     = null
+}
+
 variable "service_account_name" {
   description = "Name of the service account to have right to autoscale your cluster"
   type        = string
