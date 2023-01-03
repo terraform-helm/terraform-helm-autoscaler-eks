@@ -43,16 +43,17 @@ module "role_sa" {
   service_accounts = {
     main = {
       name      = var.service_account_name
-      namespace = var.kubernetes_namespace
+      namespace = var.namespace
     }
   }
 }
 
 module "helm" {
-  source          = "github.com/terraform-helm/terraform-helm-autoscaler?ref=v0.1.1"
+  source          = "github.com/terraform-helm/terraform-helm-autoscaler?ref=main"
   count           = var.install_helm ? 1 : 0
   release_version = var.release_version
   images          = var.images
+  namespace       = var.namespace
   set_values = [
     {
       name  = "rbac.serviceAccount.name"
@@ -68,4 +69,5 @@ module "helm" {
     eks_cluster_id = var.cluster_id,
     }
   )]
+  create_namespace = var.create_namespace
 }
