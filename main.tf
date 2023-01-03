@@ -36,7 +36,7 @@ data "aws_iam_policy_document" "this" {
 
 module "namespace" {
   count  = var.create_namespace ? 1 : 0
-  source = "github.com/littlejo/terraform-kubernetes-namespace.git?ref=main"
+  source = "github.com/littlejo/terraform-kubernetes-namespace.git?ref=v0.1"
   name   = var.namespace
 }
 
