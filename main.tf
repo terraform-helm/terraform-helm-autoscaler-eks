@@ -70,4 +70,8 @@ module "helm" {
     }
   )]
   create_namespace = var.create_namespace
+
+  depends_on = [
+    module.role_sa
+  ]
 }
