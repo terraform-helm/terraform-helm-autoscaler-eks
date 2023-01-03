@@ -49,7 +49,7 @@ module "role_sa" {
 }
 
 module "helm" {
-  source          = "github.com/terraform-helm/terraform-helm-autoscaler?ref=main"
+  source          = "github.com/terraform-helm/terraform-helm-autoscaler?ref=v0.2"
   count           = var.install_helm ? 1 : 0
   release_version = var.release_version
   images          = var.images
