@@ -34,6 +34,12 @@ data "aws_iam_policy_document" "this" {
   }
 }
 
+module "namespace" {
+  count  = var.create_namespace ? 1 : 0
+  source = "github.com/littlejo/terraform-kubernetes-namespace.git?ref=main"
+  name   = var.namespace
+}
+
 module "role_sa" {
   source        = "github.com/littlejo/terraform-aws-role-eks.git?ref=v0.1"
   name          = var.irsa_iam_role_name
@@ -46,6 +52,9 @@ module "role_sa" {
       namespace = var.namespace
     }
   }
+  depends_on = [
+    module.namespace
+  ]
 }
 
 module "helm" {
@@ -69,7 +78,6 @@ module "helm" {
     eks_cluster_id = var.cluster_id,
     }
   )]
-  create_namespace = var.create_namespace
 
   depends_on = [
     module.role_sa
